@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aetna BH LA — Value Journey | Pyx Health</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green:       #49a601;
+            --light-green: #87d001;
+            --slate:       #2e4456;
+            --teal:        #29a4a2;
+            --light-teal:  #3acebf;
+            --blue:        #0076bf;
+            --light-blue:  #0cabec;
+            --orange:      #d6661a;
+            --purple:      #5542a7;
+            --gray-1:      #d2dce8;
+            --gray-2:      #eff1f3;
+            --gray-3:      #f6f6f6;
+            --white:       #ffffff;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Montserrat', sans-serif; background: var(--white); color: var(--slate); font-size: 15px; line-height: 1.7; }
+        h1, h2, h3, h4 { font-family: 'Roboto Slab', serif; }
+
+        /* ─── HERO ─── */
+        .hero {
+            background: linear-gradient(150deg, var(--slate) 0%, #1a2d3e 55%, #0d1e2b 100%);
+            color: var(--white);
+            padding: 80px 40px 72px;
+            position: relative; overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute; bottom: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--green), var(--teal), var(--blue));
+        }
+        .hero-inner { max-width: 860px; margin: 0 auto; position: relative; }
+        .hero-eyebrow {
+            font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+            text-transform: uppercase; color: var(--light-green); margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 48px; font-weight: 300; line-height: 1.1; margin-bottom: 24px;
+            color: var(--white);
+        }
+        .hero h1 em { font-style: normal; color: var(--light-green); font-weight: 600; }
+        .hero-lead {
+            font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.7;
+            max-width: 640px; margin-bottom: 36px;
+        }
+        .hero-meta {
+            display: flex; flex-wrap: wrap; gap: 8px;
+        }
+        .hero-tag {
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 4px; padding: 5px 14px;
+            font-size: 11px; font-weight: 700; letter-spacing: 0.5px; color: rgba(255,255,255,0.6);
+        }
+        .hero-tag.accent { border-color: var(--green); color: var(--light-green); background: rgba(73,166,1,0.12); }
+
+        /* ─── CHAPTER INTRO BANNER ─── */
+        .chapter-band {
+            border-left: 5px solid var(--green);
+            padding: 28px 0 28px 32px;
+            margin-bottom: 48px;
+        }
+        .chapter-band.teal { border-color: var(--teal); }
+        .chapter-band.blue { border-color: var(--blue); }
+        .chapter-band.orange { border-color: var(--orange); }
+        .chapter-band.purple { border-color: var(--purple); }
+        .chapter-num {
+            font-size: 11px; font-weight: 700; letter-spacing: 2px;
+            text-transform: uppercase; color: var(--green); margin-bottom: 6px;
+        }
+        .chapter-band.teal .chapter-num { color: var(--teal); }
+        .chapter-band.blue .chapter-num { color: var(--blue); }
+        .chapter-band.orange .chapter-num { color: var(--orange); }
+        .chapter-band.purple .chapter-num { color: var(--purple); }
+        .chapter-title {
+            font-family: 'Roboto Slab', serif;
+            font-size: 30px; font-weight: 600; color: var(--slate); line-height: 1.2;
+            margin-bottom: 10px;
+        }
+        .chapter-sub {
+            font-size: 15px; color: #667788; line-height: 1.65; max-width: 680px;
+        }
+
+        /* ─── WRAP ─── */
+        .wrap { max-width: 900px; margin: 0 auto; padding: 0 40px; }
+        .section { padding: 72px 0; }
+        .section + .section { padding-top: 0; }
+        .divider { border: none; border-top: 1px solid var(--gray-2); margin: 0; }
+        .bg-white  { background: var(--white); }
+        .bg-light  { background: var(--gray-3); }
+        .bg-slate  { background: var(--slate); color: var(--white); }
+        .bg-teal   { background: linear-gradient(135deg, #1d7a78, #29a4a2); color: var(--white); }
+        .bg-dark   { background: linear-gradient(160deg, var(--slate), #0d1e2b); color: var(--white); }
+        .bg-green  { background: linear-gradient(135deg, #2a5f00, var(--slate)); color: var(--white); }
+
+        /* ─── NARRATIVE PROSE ─── */
+        .prose {
+            font-size: 15px; color: #445566; line-height: 1.8;
+            max-width: 720px;
+        }
+        .prose + .prose { margin-top: 20px; }
+        .prose strong { color: var(--slate); }
+        .prose em { font-style: normal; color: var(--teal); font-weight: 700; }
+
+        /* ─── INLINE STAT ─── */
+        .inline-stat {
+            display: inline-flex; align-items: baseline; gap: 4px;
+            font-family: 'Roboto Slab', serif; font-weight: 700;
+            color: var(--green); font-size: 1.15em;
+        }
+
+        /* ─── STAT ROW ─── */
+        .stat-row {
+            display: flex; gap: 0;
+            border: 1px solid var(--gray-1); border-radius: 10px; overflow: hidden;
+            margin: 36px 0;
+        }
+        .stat-item {
+            flex: 1;
+            padding: 28px 28px;
+            border-right: 1px solid var(--gray-1);
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-num {
+            font-family: 'Roboto Slab', serif;
+            font-size: 44px; font-weight: 700;
+            color: var(--green); line-height: 1;
+            margin-bottom: 6px;
+        }
+        .stat-num.teal { color: var(--teal); }
+        .stat-num.blue { color: var(--blue); }
+        .stat-num.orange { color: var(--orange); }
+        .stat-num.purple { color: var(--purple); }
+        .stat-num.slate { color: var(--slate); }
+        .stat-label { font-size: 12px; font-weight: 700; color: var(--slate); margin-bottom: 6px; }
+        .stat-note { font-size: 11px; color: #8a9baa; line-height: 1.5; }
+        .stat-note.good { color: var(--green); font-weight: 700; }
+
+        /* ─── OLD VS NEW ─── */
+        .model-compare {
+            display: grid; grid-template-columns: 1fr auto 1fr;
+            border: 1px solid var(--gray-1); border-radius: 10px; overflow: hidden;
+            margin: 36px 0;
+        }
+        .model-col { padding: 32px 28px; }
+        .model-col.old { background: var(--gray-3); }
+        .model-col.new { background: rgba(73,166,1,0.04); border-left: 2px solid var(--green); border-right: none; }
+        .model-divider {
+            background: var(--slate);
+            display: flex; align-items: center; justify-content: center;
+            padding: 0 18px;
+            font-size: 20px; color: var(--light-green); font-weight: 700;
+        }
+        .model-tag {
+            font-size: 9px; font-weight: 700; letter-spacing: 2px;
+            text-transform: uppercase; margin-bottom: 12px;
+        }
+        .model-col.old .model-tag { color: #8a9baa; }
+        .model-col.new .model-tag { color: var(--green); }
+        .model-col h3 { font-size: 16px; margin-bottom: 18px; }
+        .model-col.old h3 { color: #8a9baa; }
+        .model-col.new h3 { color: var(--slate); }
+        .model-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 8px 0; border-bottom: 1px solid var(--gray-2);
+            font-size: 13px;
+        }
+        .model-row:last-child { border-bottom: none; }
+        .model-row-lbl { color: #667788; }
+        .model-row-val { font-weight: 700; }
+        .model-col.old .model-row-val { color: #8a9baa; }
+        .model-col.new .model-row-val { color: var(--green); }
+        .model-footnote {
+            margin-top: 18px; padding: 12px 16px;
+            background: rgba(73,166,1,0.08); border-left: 3px solid var(--green);
+            border-radius: 0 6px 6px 0; font-size: 12px; color: var(--slate); line-height: 1.6;
+        }
+
+        /* ─── PULL QUOTE ─── */
+        .pull-quote {
+            border-left: 5px solid var(--teal);
+            padding: 24px 28px;
+            margin: 40px 0;
+            background: linear-gradient(135deg, rgba(41,164,162,0.04), transparent);
+        }
+        .pull-quote p {
+            font-family: 'Roboto Slab', serif;
+            font-size: 20px; font-weight: 300; font-style: italic;
+            color: var(--slate); line-height: 1.6; margin-bottom: 10px;
+        }
+        .pull-quote cite { font-size: 11px; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* ─── ENGAGE TABLE ─── */
+        .engage-table {
+            width: 100%; border-collapse: collapse; margin: 32px 0;
+        }
+        .engage-table th {
+            font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+            text-transform: uppercase; color: #8a9baa;
+            padding: 10px 16px; text-align: left;
+            border-bottom: 2px solid var(--gray-1);
+        }
+        .engage-table th:not(:first-child) { text-align: center; }
+        .engage-table td {
+            padding: 14px 16px; font-size: 14px;
+            border-bottom: 1px solid var(--gray-2);
+        }
+        .engage-table td:not(:first-child) { text-align: center; font-weight: 700; }
+        .engage-table td.old { color: #aabbcc; }
+        .engage-table td.new { color: var(--green); }
+        .engage-table td.delta {
+            color: var(--teal); font-size: 13px;
+        }
+        .engage-table td.metric { color: var(--slate); font-weight: 600; }
+
+        /* ─── SDOH COMPARE ─── */
+        .sdoh-compare {
+            border: 1px solid var(--gray-1); border-radius: 10px; overflow: hidden; margin: 32px 0;
+        }
+        .sdoh-compare-head {
+            display: grid; grid-template-columns: 1fr 90px 90px 80px;
+            padding: 10px 20px;
+            background: var(--slate);
+            font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+            text-transform: uppercase; color: rgba(255,255,255,0.55);
+        }
+        .sdoh-compare-row {
+            display: grid; grid-template-columns: 1fr 90px 90px 80px;
+            padding: 13px 20px; border-bottom: 1px solid var(--gray-2);
+            font-size: 13px; align-items: center;
+        }
+        .sdoh-compare-row:last-child { border-bottom: none; }
+        .sdoh-compare-cat { font-weight: 600; color: var(--slate); }
+        .sdoh-compare-old { text-align: center; color: #8a9baa; font-weight: 600; }
+        .sdoh-compare-new { text-align: center; color: var(--teal); font-weight: 700; }
+        .sdoh-compare-chg { text-align: center; }
+        .badge-up {
+            display: inline-block;
+            background: rgba(73,166,1,0.1); color: var(--green);
+            border-radius: 12px; padding: 2px 9px;
+            font-size: 11px; font-weight: 700;
+        }
+
+        /* ─── SDOH BAR ─── */
+        .sdoh-list { margin: 24px 0; }
+        .sdoh-row {
+            display: flex; align-items: center; gap: 14px;
+            padding: 11px 0; border-bottom: 1px solid var(--gray-2);
+        }
+        .sdoh-row:last-child { border-bottom: none; }
+        .sdoh-lbl { flex: 1; font-size: 13px; font-weight: 600; color: var(--slate); }
+        .sdoh-track { width: 160px; height: 5px; background: var(--gray-1); border-radius: 3px; flex-shrink: 0; }
+        .sdoh-fill { height: 100%; border-radius: 3px; background: var(--teal); }
+        .sdoh-pct { font-size: 13px; font-weight: 700; color: var(--teal); min-width: 38px; text-align: right; }
+
+        /* ─── CENTERPIECE ─── */
+        .centerpiece {
+            background: linear-gradient(150deg, var(--slate), #0d1e2b);
+            border-radius: 16px; padding: 56px 48px; text-align: center;
+            color: var(--white); margin: 40px 0; position: relative; overflow: hidden;
+        }
+        .centerpiece::before {
+            content: ''; position: absolute;
+            top: -100px; right: -100px;
+            width: 300px; height: 300px;
+            background: rgba(41,164,162,0.08); border-radius: 50%;
+        }
+        .centerpiece-eyebrow {
+            font-size: 10px; font-weight: 700; letter-spacing: 2px;
+            text-transform: uppercase; color: var(--light-teal); margin-bottom: 16px;
+        }
+        .centerpiece-num {
+            font-family: 'Roboto Slab', serif;
+            font-size: 108px; font-weight: 700; color: var(--light-green);
+            line-height: 1; margin-bottom: 10px;
+        }
+        .centerpiece-label {
+            font-size: 21px; font-weight: 300; color: var(--white);
+            margin-bottom: 18px; line-height: 1.4; max-width: 540px; margin-left: auto; margin-right: auto;
+        }
+        .centerpiece-sub { font-size: 13px; color: rgba(255,255,255,0.55); max-width: 520px; margin: 0 auto; line-height: 1.6; }
+
+        /* ─── CARE OUTCOMES ─── */
+        .care-list { margin: 32px 0; }
+        .care-row {
+            display: flex; align-items: center; gap: 20px;
+            padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .care-row:last-child { border-bottom: none; }
+        .care-num {
+            font-family: 'Roboto Slab', serif; font-size: 40px; font-weight: 700;
+            color: var(--light-teal); min-width: 80px; text-align: right;
+        }
+        .care-text { }
+        .care-label { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 3px; }
+        .care-note { font-size: 12px; color: rgba(255,255,255,0.55); }
+
+        /* ─── MEMBER STORY ─── */
+        .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin: 32px 0; }
+        .story-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px; padding: 32px;
+        }
+        .story-quote {
+            font-family: 'Roboto Slab', serif;
+            font-size: 16px; font-weight: 300; font-style: italic;
+            color: var(--white); line-height: 1.65; margin-bottom: 12px;
+        }
+        .story-attr { font-size: 11px; color: var(--light-teal); font-weight: 700; margin-bottom: 20px; }
+        .story-section { margin-bottom: 14px; }
+        .story-section-label {
+            font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
+            text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 8px;
+        }
+        .story-item {
+            display: flex; gap: 8px; font-size: 12px;
+            color: rgba(255,255,255,0.78); margin-bottom: 5px; line-height: 1.5;
+        }
+        .story-item::before { content: '→'; color: var(--light-teal); flex-shrink: 0; }
+
+        /* ─── VALUE ROWS ─── */
+        .value-list { margin: 32px 0; }
+        .value-row {
+            display: flex; gap: 24px; align-items: flex-start;
+            padding: 24px 0; border-bottom: 1px solid var(--gray-2);
+        }
+        .value-row:last-child { border-bottom: none; }
+        .value-row-num {
+            font-family: 'Roboto Slab', serif; font-size: 36px; font-weight: 700;
+            color: var(--green); min-width: 130px; line-height: 1.1; flex-shrink: 0;
+        }
+        .value-row-body { }
+        .value-row-title { font-size: 14px; font-weight: 700; color: var(--slate); margin-bottom: 6px; }
+        .value-row-text { font-size: 13px; color: #667788; line-height: 1.65; }
+
+        /* ─── REVENUE BAR ─── */
+        .rev-wrap { margin: 36px 0; }
+        .rev-labels { display: flex; justify-content: space-between; font-size: 12px; color: #8a9baa; margin-bottom: 8px; }
+        .rev-track { background: var(--gray-1); border-radius: 6px; height: 14px; overflow: hidden; }
+        .rev-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--teal), var(--green)); }
+        .rev-months {
+            display: flex; margin-top: 10px; gap: 0;
+        }
+        .rev-month {
+            flex: 1; text-align: center; font-size: 10px; color: #8a9baa;
+            padding: 4px 2px; border-right: 1px solid var(--gray-2);
+        }
+        .rev-month:last-child { border-right: none; }
+        .rev-month-amt { font-weight: 700; color: var(--teal); font-size: 10px; }
+
+        /* ─── OPTIONS ─── */
+        .option-block { margin: 0 0 20px; padding: 28px 32px; border-radius: 12px; }
+        .option-block.rec { background: rgba(73,166,1,0.06); border: 2px solid var(--green); }
+        .option-block.alt { background: rgba(41,164,162,0.05); border: 1px solid var(--teal); }
+        .option-block.cau { background: rgba(214,102,26,0.05); border: 1px solid rgba(214,102,26,0.3); }
+        .option-badge {
+            display: inline-block; border-radius: 4px; padding: 3px 10px;
+            font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
+            text-transform: uppercase; margin-bottom: 10px;
+        }
+        .option-badge.rec { background: rgba(73,166,1,0.12); color: var(--green); }
+        .option-badge.alt { background: rgba(41,164,162,0.12); color: var(--teal); }
+        .option-badge.cau { background: rgba(214,102,26,0.12); color: var(--orange); }
+        .option-title { font-family: 'Roboto Slab', serif; font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+        .option-block.rec .option-title { color: var(--slate); }
+        .option-block.alt .option-title { color: var(--slate); }
+        .option-block.cau .option-title { color: #667788; }
+        .option-text { font-size: 13px; color: #667788; line-height: 1.65; }
+        .option-block.rec .option-text { color: var(--slate); }
+
+        /* ─── CALLOUT ─── */
+        .callout {
+            padding: 18px 22px; border-radius: 8px; margin: 28px 0;
+            font-size: 13px; line-height: 1.65;
+        }
+        .callout.teal { background: rgba(41,164,162,0.07); border-left: 4px solid var(--teal); color: var(--slate); }
+        .callout.green { background: rgba(73,166,1,0.07); border-left: 4px solid var(--green); color: var(--slate); }
+        .callout.orange { background: rgba(214,102,26,0.07); border-left: 4px solid var(--orange); color: var(--slate); }
+        .callout strong { font-weight: 700; }
+        .callout.teal strong { color: var(--teal); }
+        .callout.green strong { color: var(--green); }
+
+        /* ─── CONNECTOR ─── */
+        .connector {
+            text-align: center; padding: 28px 0;
+            font-size: 13px; color: #8a9baa;
+            display: flex; align-items: center; gap: 16px;
+        }
+        .connector::before, .connector::after {
+            content: ''; flex: 1; height: 1px; background: var(--gray-1);
+        }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: var(--slate); padding: 36px 40px;
+            text-align: center; color: rgba(255,255,255,0.5); font-size: 12px;
+        }
+        .footer strong { color: var(--light-green); }
+
+        @media (max-width: 720px) {
+            .hero { padding: 48px 24px 56px; }
+            .hero h1 { font-size: 32px; }
+            .wrap { padding: 0 24px; }
+            .model-compare { grid-template-columns: 1fr; }
+            .model-divider { display: none; }
+            .stat-row { flex-direction: column; }
+            .stat-item { border-right: none; border-bottom: 1px solid var(--gray-1); }
+            .story-grid { grid-template-columns: 1fr; }
+            .sdoh-compare-head, .sdoh-compare-row { grid-template-columns: 1fr 70px 70px 60px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════ -->
+<div class="hero">
+    <div class="hero-inner">
+        <div class="hero-eyebrow">Pyx Health × Aetna Behavioral Health Louisiana</div>
+        <h1>Five steps from<br>outreach to <em>value.</em></h1>
+        <p class="hero-lead">This is a proof, not a summary. Each section shows one step in the chain — from members responding to outreach, to engagement deepening, to care barriers being removed, to the outcomes Aetna is accountable for. Follow it from beginning to end.</p>
+        <div class="hero-meta">
+            <span class="hero-tag accent">New Contract · Nov 1, 2025</span>
+            <span class="hero-tag">Aetna BH Louisiana</span>
+            <span class="hero-tag">Medicaid · Maternal Health</span>
+            <span class="hero-tag">80,352 Eligible Members</span>
+            <span class="hero-tag">Data through April 13, 2026</span>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PART 1 — MEMBERS RESPOND
+═══════════════════════════════════════════════ -->
+<div class="bg-white">
+<div class="wrap">
+<div class="section">
+
+    <div class="chapter-band">
+        <div class="chapter-num">Part 1 of 5</div>
+        <h2 class="chapter-title">Members respond.</h2>
+        <p class="chapter-sub">The foundation of any value case is whether members show up. In Louisiana, they are — at a rate that meaningfully exceeds what the prior model ever produced.</p>
+    </div>
+
+    <p class="prose">On November 1, 2025, the Aetna BH Louisiana contract changed. Not the budget — <strong>the budget stayed the same at $136,591 per year</strong>. What changed was the structure. Where the old model charged Aetna a flat rate at contract signing, the new model charges only when members are genuinely engaged. It is an alignment of incentives that changed what both sides are accountable for.</p>
+
+    <div class="model-compare">
+        <div class="model-col old">
+            <div class="model-tag">Before November 2025</div>
+            <h3>Flat Rate Model</h3>
+            <div class="model-row"><span class="model-row-lbl">Annual investment</span><span class="model-row-val">$136,591</span></div>
+            <div class="model-row"><span class="model-row-lbl">Payment trigger</span><span class="model-row-val">Contract signature</span></div>
+            <div class="model-row"><span class="model-row-lbl">What triggers billing</span><span class="model-row-val">Time, not engagement</span></div>
+            <div class="model-row"><span class="model-row-lbl">Member engagement rate</span><span class="model-row-val">56%</span></div>
+            <div class="model-row"><span class="model-row-lbl">Performance risk</span><span class="model-row-val">Fully on Aetna</span></div>
+        </div>
+        <div class="model-divider">→</div>
+        <div class="model-col new">
+            <div class="model-tag">New Contract · Nov 1, 2025</div>
+            <h3>Engagement-Based (PEMPM)</h3>
+            <div class="model-row"><span class="model-row-lbl">Annual investment</span><span class="model-row-val">$136,591 (same)</span></div>
+            <div class="model-row"><span class="model-row-lbl">Payment trigger</span><span class="model-row-val">Proven member engagement</span></div>
+            <div class="model-row"><span class="model-row-lbl">What triggers billing</span><span class="model-row-val">Engagement, not time</span></div>
+            <div class="model-row"><span class="model-row-lbl">Member engagement rate</span><span class="model-row-val">87% ↑ +55%</span></div>
+            <div class="model-row"><span class="model-row-lbl">Performance risk</span><span class="model-row-val">Shared — pay for engagement</span></div>
+            <div class="model-footnote">The same budget now requires demonstrated engagement before it's charged. Payment is aligned to performance — Aetna only pays when members are actually being served.</div>
+        </div>
+    </div>
+
+    <p class="prose">Since the new contract launched, <strong>409 members have enrolled in the engagement-based model</strong> — joining 6,805 who have participated in the program since inception. Of those newly engaged members, <strong>87% are actively engaging</strong> — a 55% improvement over the 56% engagement rate under the flat-rate model. That is not a marginal gain. It is a structural shift in how many members are actually being reached.</p>
+
+    <div class="stat-row">
+        <div class="stat-item">
+            <div class="stat-num">87%</div>
+            <div class="stat-label">Member Engagement Rate</div>
+            <div class="stat-note good">↑ 55% vs. 56% in flat-rate model</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num teal">148%</div>
+            <div class="stat-label">To Engagement Trigger</div>
+            <div class="stat-note">Exceeded the engagement threshold needed to unlock billing — by nearly 50%</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num blue">$92,610</div>
+            <div class="stat-label">Revenue Earned to Date</div>
+            <div class="stat-note">68% toward the $136,591 goal · 75% of budget period elapsed</div>
+        </div>
+    </div>
+
+    <p class="prose">The monthly billing tells the story of a program that accelerated. November started steady, December continued. Then January — with the program fully in motion — nearly doubled the prior month. The pace has normalized since, but the engagement that was built in those early months is compounding into the care outcomes that come later.</p>
+
+    <div class="rev-wrap">
+        <div class="rev-labels">
+            <span><strong>$92,610 earned</strong> — 68% of contract goal</span>
+            <span>Goal: $136,591</span>
+        </div>
+        <div class="rev-track">
+            <div class="rev-fill" style="width:68%;"></div>
+        </div>
+        <div class="rev-months">
+            <div class="rev-month"><div>Nov '25</div><div class="rev-month-amt">$12,460</div></div>
+            <div class="rev-month"><div>Dec '25</div><div class="rev-month-amt">$13,440</div></div>
+            <div class="rev-month"><div>Jan '26</div><div class="rev-month-amt">$24,010</div></div>
+            <div class="rev-month"><div>Feb '26</div><div class="rev-month-amt">$19,600</div></div>
+            <div class="rev-month"><div>Mar '26</div><div class="rev-month-amt">$16,940</div></div>
+            <div class="rev-month"><div>Apr '26 (partial)</div><div class="rev-month-amt">$6,160</div></div>
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+
+<div class="connector">Members are responding. Now — what does that engagement actually look like?</div>
+
+<!-- ══════════════════════════════════════════════
+     PART 2 — MEMBERS ENGAGE
+═══════════════════════════════════════════════ -->
+<div class="bg-light">
+<div class="wrap">
+<div class="section">
+
+    <div class="chapter-band teal">
+        <div class="chapter-num">Part 2 of 5</div>
+        <h2 class="chapter-title">Members engage.</h2>
+        <p class="chapter-sub">Reaching a member once is not engagement. What the new model produces is sustained conversation — and the difference between 14-minute calls and 26-minute calls is not a data point. It's a relationship.</p>
+    </div>
+
+    <p class="prose">The flat-rate model averaged <strong>1.7 calls per member and 14 minutes per call</strong>. That is enough to check a box. It is not enough to build the trust required for a Medicaid maternal health member to disclose that she hasn't seen an OB in four months, or that she doesn't understand her insurance, or that she is scared and grieving. The new model produces something different.</p>
+
+    <table class="engage-table">
+        <thead>
+            <tr>
+                <th>Engagement Metric</th>
+                <th>Flat-Rate Model</th>
+                <th>New Model</th>
+                <th>Change</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="metric">Avg Calls per Member</td>
+                <td class="old">1.7</td>
+                <td class="new">2.5</td>
+                <td class="delta">↑ 47%</td>
+            </tr>
+            <tr>
+                <td class="metric">Avg Minutes per Call</td>
+                <td class="old">14 min</td>
+                <td class="new">26 min</td>
+                <td class="delta">↑ 86%</td>
+            </tr>
+            <tr>
+                <td class="metric">Total Engagement Increase</td>
+                <td class="old">—</td>
+                <td class="new">+55%</td>
+                <td class="delta">Across all dimensions</td>
+            </tr>
+            <tr>
+                <td class="metric">Avg Activities per Member</td>
+                <td class="old">18</td>
+                <td class="new">19</td>
+                <td class="delta">Stable at higher engagement depth</td>
+            </tr>
+            <tr>
+                <td class="metric">App Conversations (Pyxir)</td>
+                <td class="old">—</td>
+                <td class="new">14,375</td>
+                <td class="delta">Continuous between-call contact</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="pull-quote">
+        <p>"It is not Pyx that uncovers barriers — it is sustained engagement that does. Depth of engagement explains why behavior change is happening."</p>
+        <cite>Alexis Colton, Chief Revenue Officer, Pyx Health</cite>
+    </div>
+
+    <p class="prose">Two structural changes drive the engagement improvement. First, <strong>the onboarding workflow now leads with understanding the member's needs</strong> — before app download, before registration, before any administrative step. That shift earns trust at first contact. Members share more because someone asked first. Second, <strong>the care team is staffed for phone-based depth</strong> — appointment scheduling, barrier navigation, and care coordination — not just companionship. These are conversations that accomplish something. Longer calls are a symptom of that.</p>
+
+    <div class="callout teal">
+        <strong>On the engagement rate this month:</strong> The April engagement rate reflects a moderation as the program manages pace relative to budget. This is expected at the 75% mark of a contract year — and it does not diminish the engagement built in the prior months, which is now converting into the care outcomes shown in Part 4.
+    </div>
+
+</div>
+</div>
+</div>
+
+<div class="connector">That depth of engagement reveals something important about this population.</div>
+
+<!-- ══════════════════════════════════════════════
+     PART 3 — ENGAGEMENT DEEPENS
+═══════════════════════════════════════════════ -->
+<div class="bg-white">
+<div class="wrap">
+<div class="section">
+
+    <div class="chapter-band blue">
+        <div class="chapter-num">Part 3 of 5</div>
+        <h2 class="chapter-title">Engagement deepens — and uncovers what was hidden.</h2>
+        <p class="chapter-sub">The same screening questions were asked in the old model and the new. What changed is how deeply members engage — and therefore how much they're willing to disclose. The data below shows what that difference looks like.</p>
+    </div>
+
+    <p class="prose">In Louisiana, the new engagement model identified more needs in <strong>3 of 13 screened SDOH categories</strong>. Social and community isolation — the dominant need in this population — rose from 79% to 83%. Housing stability identification increased from 41% to 44%. These are not massive jumps, and the Louisiana market is one where further calibration may deepen the gains. But the direction is clear: more sustained engagement surfaces more of what matters.</p>
+
+    <div class="sdoh-compare">
+        <div class="sdoh-compare-head">
+            <div>Need Category</div>
+            <div style="text-align:center;">Old Contract</div>
+            <div style="text-align:center;">New Model</div>
+            <div style="text-align:center;">Change</div>
+        </div>
+        <div class="sdoh-compare-row">
+            <div class="sdoh-compare-cat">Social &amp; Community Isolation</div>
+            <div class="sdoh-compare-old">79%</div>
+            <div class="sdoh-compare-new">83%</div>
+            <div class="sdoh-compare-chg"><span class="badge-up">+4 pts</span></div>
+        </div>
+        <div class="sdoh-compare-row">
+            <div class="sdoh-compare-cat">Housing Stability</div>
+            <div class="sdoh-compare-old">41%</div>
+            <div class="sdoh-compare-new">44%</div>
+            <div class="sdoh-compare-chg"><span class="badge-up">+3 pts</span></div>
+        </div>
+        <div class="sdoh-compare-row">
+            <div class="sdoh-compare-cat">Care Gap / Access</div>
+            <div class="sdoh-compare-old">14%</div>
+            <div class="sdoh-compare-new">15%</div>
+            <div class="sdoh-compare-chg"><span class="badge-up">+1 pt</span></div>
+        </div>
+    </div>
+
+    <p class="prose">Across the full population in the 12-month rolling window, <strong>83% of screened members indicate at least one unmet social need</strong>. The average member carries <strong>4 distinct unmet needs</strong>. That is not a profile that a one-time call can address. It is a profile that requires the kind of sustained, trusted relationship the new model is built to produce. Here is the full need distribution:</p>
+
+    <div class="sdoh-list" id="sdoh-list"></div>
+
+    <p class="prose" style="margin-top:32px;">Two findings from the deeper engagement are worth calling out specifically. First, <strong>61% of screened members flagged an urgent need</strong> — meaning they are in active distress, not just chronic need. Each urgent flag triggers an outbound call within one business day. These are members who might not call their plan. But they do pick up when someone calls them. Second, <strong>44% of members score as lonely on the UCLA-3 loneliness assessment</strong>, and 84% of those lonely members also show psychological distress (PHQ-4 ≥3). This is the high-utilization cohort that drives disproportionate plan spend — and they are being identified and actively supported through 8,912 loneliness interventions delivered via the Pyxir platform.</p>
+
+    <div class="callout teal">
+        <strong>Why this matters:</strong> Loneliness and psychological distress are among the strongest predictors of high healthcare utilization in Medicaid populations. Identifying and measuring these members — not just engaging them once — is what the sustained engagement model enables. The flat-rate model couldn't get deep enough to find them consistently.
+    </div>
+
+</div>
+</div>
+</div>
+
+<div class="connector">Once barriers are identified, here is what happens next.</div>
+
+<!-- ══════════════════════════════════════════════
+     PART 4 — MEMBERS TAKE ACTION
+═══════════════════════════════════════════════ -->
+<div class="bg-dark">
+<div class="wrap">
+<div class="section">
+
+    <div class="chapter-band orange" style="border-color:var(--light-teal);">
+        <div class="chapter-num" style="color:var(--light-teal);">Part 4 of 5</div>
+        <h2 class="chapter-title" style="color:var(--white);">Members take action.</h2>
+        <p class="chapter-sub" style="color:rgba(255,255,255,0.65);">When barriers are identified and relationships are sustained, members don't just stay engaged — they move. They schedule. They show up. They close the gaps that have been keeping them out of care. This is what the engagement model is producing in Louisiana's maternal health population.</p>
+    </div>
+
+    <div class="centerpiece">
+        <div class="centerpiece-eyebrow">The Centerpiece Outcome</div>
+        <div class="centerpiece-num">31%</div>
+        <div class="centerpiece-label">of engaged members have completed a prenatal or postpartum visit</div>
+        <div class="centerpiece-sub">For a Medicaid maternal health population, this is the measure that matters most. Prenatal and postpartum care access is a primary quality indicator for the plan — and sustained engagement is what's driving completion, not luck or passive outreach.</div>
+    </div>
+
+    <p class="prose" style="color:rgba(255,255,255,0.75);">Beyond that headline number, the engagement relationship has facilitated a range of documented care connections that would not have occurred under a model built for one-time outreach.</p>
+
+    <div class="care-list">
+        <div class="care-row">
+            <div class="care-num">108</div>
+            <div class="care-text">
+                <div class="care-label">Postpartum Follow-Up Visits Facilitated</div>
+                <div class="care-note">A core HEDIS quality measure — each one a directly attributable outcome driven by the engagement relationship, not a referral</div>
+            </div>
+        </div>
+        <div class="care-row">
+            <div class="care-num">68</div>
+            <div class="care-text">
+                <div class="care-label">Prenatal Visits Supported</div>
+                <div class="care-note">Members who were disconnected from OB care, reconnected — often after the care team worked through insurance confusion, provider access, and fear of cost</div>
+            </div>
+        </div>
+        <div class="care-row">
+            <div class="care-num">85</div>
+            <div class="care-text">
+                <div class="care-label">PCP / Annual Exam Connections</div>
+                <div class="care-note">Primary care connections for members managing behavioral and physical health needs simultaneously</div>
+            </div>
+        </div>
+        <div class="care-row">
+            <div class="care-num">55</div>
+            <div class="care-text">
+                <div class="care-label">Therapy / Counseling Connections</div>
+                <div class="care-note">Behavioral health access facilitated for members who disclosed distress but lacked a path to care</div>
+            </div>
+        </div>
+        <div class="care-row">
+            <div class="care-num">3,740</div>
+            <div class="care-text">
+                <div class="care-label">Members Engaged with Support Center</div>
+                <div class="care-note">Active engagement — not passive enrollment — through the Pyx support center, driven by the care team relationship</div>
+            </div>
+        </div>
+    </div>
+
+    <p class="prose" style="color:rgba(255,255,255,0.65); margin-top:36px; margin-bottom:20px;">These numbers are not abstractions. Here is what two of those connections looked like in practice.</p>
+
+    <div class="story-grid">
+        <div class="story-card">
+            <div class="story-quote">"I need to set us up for the future… me and my baby… so we can do this together."</div>
+            <div class="story-attr">— "Anna", 34 · Aetna BH Louisiana member</div>
+            <div class="story-section">
+                <div class="story-section-label">Barriers uncovered through engagement</div>
+                <div class="story-item">Struggling with rent and utilities; seeking income stability before delivery</div>
+                <div class="story-item">UCLA-3 score of 5, EPDS score of 18 — significant loneliness and postpartum depression risk identified</div>
+                <div class="story-item">Disconnected from OB/GYN — no active prenatal care</div>
+            </div>
+            <div class="story-section">
+                <div class="story-section-label">What the engagement relationship made possible</div>
+                <div class="story-item">11 targeted resources connected for rent, utilities, and income stability</div>
+                <div class="story-item">Now attending OB appointments regularly — care gap closed through sustained motivational support</div>
+                <div class="story-item">Education and certification options connected for long-term economic stability</div>
+            </div>
+        </div>
+        <div class="story-card">
+            <div class="story-quote">"I always called my mom when I didn't understand something. Having someone help me figure things out made me feel like I wasn't doing this alone."</div>
+            <div class="story-attr">— "Claudia", 22 · Aetna BH Louisiana member</div>
+            <div class="story-section">
+                <div class="story-section-label">Barriers uncovered through engagement</div>
+                <div class="story-item">First-time pregnant, navigating care alone after her mother's passing</div>
+                <div class="story-item">Didn't understand insurance coverage or how to find a provider as a new adult</div>
+                <div class="story-item">Grief, isolation, no care team connection at all</div>
+            </div>
+            <div class="story-section">
+                <div class="story-section-label">What the engagement relationship made possible</div>
+                <div class="story-item">Connected with a local church support group for grief and community</div>
+                <div class="story-item">Scheduled first OB-GYN appointment — now connected to prenatal care for the first time</div>
+                <div class="story-item">Full insurance navigation completed — prenatal coverage, member portal, member services</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+
+<div class="connector" style="background:var(--white);">And those actions have a dollar value that compounds over time.</div>
+
+<!-- ══════════════════════════════════════════════
+     PART 5 — ACTION DRIVES PLAN VALUE
+═══════════════════════════════════════════════ -->
+<div class="bg-white">
+<div class="wrap">
+<div class="section">
+
+    <div class="chapter-band purple" style="border-color:var(--purple);">
+        <div class="chapter-num" style="color:var(--purple);">Part 5 of 5</div>
+        <h2 class="chapter-title">Action drives plan value.</h2>
+        <p class="chapter-sub">Completed prenatal visits. Closed postpartum gaps. Reduced barriers to care. Each one translates to measurable, attributable plan value — in cost avoidance, quality metrics, and member retention.</p>
+    </div>
+
+    <div class="value-list">
+        <div class="value-row">
+            <div class="value-row-num">$2,400–<br>$3,200</div>
+            <div class="value-row-body">
+                <div class="value-row-title">Cost avoidance per delivery — prenatal access</div>
+                <div class="value-row-text">Published research documents that pregnant Medicaid beneficiaries without prenatal care are significantly more likely to incur high delivery and NICU costs. With 68 prenatal visits facilitated and 108 postpartum connections, the aggregate cost avoidance in this population is material — and grows as the program continues.</div>
+            </div>
+        </div>
+        <div class="value-row">
+            <div class="value-row-num">1.8×</div>
+            <div class="value-row-body">
+                <div class="value-row-title">Published ROI — Pyx maternal health programs</div>
+                <div class="value-row-text">Pyx maternal health programs demonstrate 1.8x ROI in documented in-market outcomes, $302 PMPM in savings, 55% reduction in postpartum depression rates, and 20% increase in postpartum follow-up visit completion. These benchmarks were produced by programs with the same engagement model now running in Louisiana.</div>
+            </div>
+        </div>
+        <div class="value-row">
+            <div class="value-row-num">HEDIS</div>
+            <div class="value-row-body">
+                <div class="value-row-title">Quality metric impact — postpartum visit completion</div>
+                <div class="value-row-text">Postpartum visit completion rates are a core Medicaid quality measure. Every postpartum follow-up facilitated by this program is a directly attributable quality outcome. 108 facilitated this period. Each one is trackable, documentable, and reportable to regulators and accreditors.</div>
+            </div>
+        </div>
+        <div class="value-row">
+            <div class="value-row-num">At scale</div>
+            <div class="value-row-body">
+                <div class="value-row-title">Operational efficiency — managed at scale</div>
+                <div class="value-row-text">Pyx is managing outreach, screening, engagement, barrier resolution, and care coordination across 80,352 eligible members — reducing the burden on Aetna care management teams. The hours the Pyx care team spends on the phone are hours Aetna doesn't have to staff. The tracking, reporting, and follow-up are all included.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="callout green">
+        <strong>The mechanism that makes this work:</strong> It is sustained engagement — not any single intervention — that produces these outcomes. Depth of engagement is why behavior change is happening. Members who are in ongoing relationship with a care team schedule appointments, show up to visits, and close care gaps. The plan is buying the engagement. The engagement is what is delivering.
+    </div>
+
+</div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     AT 75% — THREE PATHS
+═══════════════════════════════════════════════ -->
+<div class="bg-light">
+<div class="wrap">
+<div class="section">
+
+    <div class="chapter-band orange">
+        <div class="chapter-num">At 75% of Budget · April 2026</div>
+        <h2 class="chapter-title">You have a choice to make. Here is our honest assessment of each option.</h2>
+        <p class="chapter-sub">Per our agreement, we wanted to proactively bring you a clear picture of where we are — in performance and in investment — so we can align on the right path together. The engagement is translating into action. The return will build as that engagement continues to convert into sustained care outcomes. At this inflection point, there are three paths.</p>
+    </div>
+
+    <div class="option-block rec">
+        <div class="option-badge rec">Pyx Recommends</div>
+        <div class="option-title">Option 1 — Continue at current pace and scope</div>
+        <p class="option-text">Maintain the current population and engagement level. This allows the care team to continue building on the relationships that are already producing outcomes — the 31% prenatal/postpartum completion rate, the 108 postpartum follow-ups, the 68 prenatal visits. The infrastructure is in place. The engagement is in motion. Continuity at this level delivers the largest potential return and allows the value that is already building to fully compound over the remaining months of the contract year.</p>
+    </div>
+
+    <div class="option-block alt">
+        <div class="option-badge alt">Also Viable</div>
+        <div class="option-title">Option 2 — Refine scope, maintain engagement quality</div>
+        <p class="option-text">Concentrate on the highest-impact member cohorts — High Cost / High Utilization (4.2% of the eligible population) and members with the most complex barrier profiles — while maintaining the same depth of engagement. This concentrates resources where the return on engagement is highest and where engagement is most likely to directly convert into quality outcomes and cost avoidance. The engagement model's effectiveness is preserved; the scope is narrowed to where it matters most.</p>
+    </div>
+
+    <div class="option-block cau">
+        <div class="option-badge cau">Pyx Advises Against</div>
+        <div class="option-title">Option 3 — Maintain scope, reduce engagement intensity</div>
+        <p class="option-text">Reach the same members with fewer or shorter interactions. Our concern here is direct: the value in this program is realized through depth, not reach. The 31% prenatal and postpartum completion rate does not happen because a member was called once. It happens because a care team was present across multiple conversations — long enough to earn trust, surface barriers, and support action. Reducing engagement intensity limits the mechanism. If this option is selected, we would expect a meaningful reduction in care outcome rates in subsequent reporting periods.</p>
+    </div>
+
+    <div class="callout green" style="margin-top:24px;">
+        <strong>Our recommendation:</strong> Continue the current approach (Option 1), or concentrate scope if needed (Option 2). Both allow us to build on the momentum already in motion and convert the engagement built over the past five months into the maternal outcomes Aetna is accountable for. The proof of concept is established. The opportunity is to let it compound.
+    </div>
+
+</div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<div class="footer">
+    <strong>Pyx Health × Aetna Behavioral Health Louisiana</strong> &nbsp;·&nbsp;
+    Engagement Value Journey &nbsp;·&nbsp;
+    Data through April 13, 2026 &nbsp;·&nbsp;
+    Prepared by Pyx Health Client Management
+</div>
+
+<script>
+    const sdohData = [
+        { lbl: 'Social & Community Isolation', pct: 83 },
+        { lbl: 'Economic Stability', pct: 55 },
+        { lbl: 'Housing Stability', pct: 44 },
+        { lbl: 'Food Access', pct: 33 },
+        { lbl: 'Medication Adherence', pct: 24 },
+        { lbl: 'Transportation', pct: 20 },
+        { lbl: 'Income / Employment', pct: 20 },
+        { lbl: 'Health Literacy', pct: 16 },
+        { lbl: 'Care Gap / Access', pct: 15 },
+        { lbl: 'Safety', pct: 14 },
+    ];
+
+    document.getElementById('sdoh-list').innerHTML = sdohData.map(d => `
+        <div class="sdoh-row">
+            <span class="sdoh-lbl">${d.lbl}</span>
+            <div class="sdoh-track"><div class="sdoh-fill" style="width:${d.pct}%"></div></div>
+            <span class="sdoh-pct">${d.pct}%</span>
+        </div>
+    `).join('');
+</script>
+</body>
+</html>
